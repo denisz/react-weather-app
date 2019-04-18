@@ -1,19 +1,30 @@
 class LocationModel {
-    constructor(latitude, longitude, meta) {
+    constructor(latitude, longitude, name, country, meta) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.name = name;
+        this.country = country;
         this.meta = meta;
     }
 
-    toJson() {
-        let {latitude, longitude, meta} = this;
-        return JSON.stringify({latitude, longitude, meta});
+    get isCurrent () {
+        return Boolean(this.meta.current);
+    }
+
+    get hashCode() {
+        return `${this.latitude}${this.longitude}`;
+    }
+
+    get fullName() {
+        if (this.country) {
+            return `${this.name}, ${this.country}`
+        }
+        return this.name;
+    }
+
+    get position() {
+        return { lon: this.longitude, lat: this.latitude}
     }
 }
-
-LocationModel.fromJson = (jsonToken) => {
-    const json = JSON.parse(jsonToken);
-    return new LocationModel(json.latitude, json.longDesc, jons.meta);
-};
 
 export {LocationModel}

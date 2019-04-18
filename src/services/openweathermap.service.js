@@ -1,26 +1,36 @@
-import config from '../config';
+import { config } from '../config';
 
-//Сервис работы с api
 class OpenweathermapService {
     constructor(httpClient) {
         this.httpClient = httpClient;
+    }
 
-        this.instance = httpClient.create({
-            baseURL: config.API_URL,
-            timeout: 1000,
-            // appid=${API_KEY}
-            headers: {'X-Custom-Header': 'foobar'}
+    findLocationWithQuery(q) {
+        return this.httpClient({
+            baseURL: config.OPWS_API_URL,
+            method: "get",
+            url: "/find",
+            params: { q, appid: config.OPWS_API_KEY }
+        })
+    }
+
+    fetchWeatherWithLatLon(lat, lon) {
+        return this.httpClient({
+            baseURL: config.OPWS_API_URL,
+            method: "get",
+            url: "/weather",
+            params: { lat, lon, appid: config.OPWS_API_KEY }
         });
     }
 
-    findLocation(query) {
-
-    }
-
-    async fetchWeatherWithLatLon(lat, lon) {
-        return axios.get()
+    fetchFiveDayForecast(lat, lon) {
+        return this.httpClient({
+            baseURL: config.OPWS_API_URL,
+            method: "get",
+            url: "/forecast/daily",
+            params: { lat, lon, cnt: 5, appid: config.OPWS_API_KEY }
+        })
     }
 }
-
 
 export { OpenweathermapService }
