@@ -2,7 +2,7 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://denisz.github.io/react-weather-app/",
+  "homepage": "https://denisz.github.io/react-weather-app/",
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
@@ -19,6 +19,7 @@
     "react-router-dom": "^5.0.0",
     "react-router-redux": "^4.0.8",
     "react-slick": "^0.23.2",
+    "react-toastify": "^5.1.0",
     "redux": "^4.0.1",
     "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",

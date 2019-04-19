@@ -3,7 +3,12 @@ import cx from 'classnames';
 import styled from "styled-components";
 import { OpenWeatherIconMap } from './mapIcons';
 
-const PACKAGE_NAME_OWM = "owm";
+
+export const PACKAGE_NAME_OWM = "owm";
+export const PACKAGE_NAME_OWM_DAY_NIGHT = "owm_day_night";
+
+const hours = new Date().getHours();
+const isDayTime = hours > 6 && hours < 20;
 
 const pkg = (name) => {
     switch (name) {
@@ -12,11 +17,17 @@ const pkg = (name) => {
                 const key = `wi-owm-${icon}`;
                 return OpenWeatherIconMap[key] || OpenWeatherIconMap['unknown'];
             };
+        case PACKAGE_NAME_OWM_DAY_NIGHT:
+            return (icon) => {
+                const suffix = isDayTime ? 'day' : 'night';
+                const key = `wi-owm-${suffix}-${icon}`;
+                return OpenWeatherIconMap[key] || OpenWeatherIconMap['unknown'];
+            };
         default: return ()=>{};
     }
 };
 
-const IconWeatherComponent = ({ icon, packageName = PACKAGE_NAME_OWM,className }) =>
+const IconWeatherComponent = ({ icon, packageName = PACKAGE_NAME_OWM, className }) =>
     <i className={cx('wi', pkg(packageName)(icon), className)} />;
 
 const IconWeatherSmallComponent = styled(IconWeatherComponent)`

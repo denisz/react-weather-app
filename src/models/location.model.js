@@ -23,7 +23,9 @@ class LocationModel {
     }
 
     get position() {
-        return { lon: this.longitude, lat: this.latitude}
+        return {
+            lon: parseFloat(this.longitude.toFixed(2)),
+            lat: parseFloat(this.latitude.toFixed(2))}
     }
 }
 

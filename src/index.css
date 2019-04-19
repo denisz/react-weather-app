@@ -16,11 +16,21 @@ code {
     monospace;
 }
 
-
 .w-slider-dots li button:before {
     color: white;
 }
 
 .w-slider-dots li.slick-active button:before {
     color: white;
+}
+
+.Toastify__toast.Toastify__toast--default.my-toast-container {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 10px;
+    box-shadow: none;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    min-height: 44px;
 }

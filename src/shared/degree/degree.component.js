@@ -14,6 +14,8 @@ const Icon = styled.i``;
 const Btn = styled.div`
     font-size: 40px;
     cursor: pointer;
+    opacity: ${props => props.active ? 1 : 0.5 };
+    
 `;
 
 const IconDegree = ({...rest}) => <Icon {...rest} className={"wi wi-degrees"}/>;
@@ -42,7 +44,6 @@ const DegreeComponent = ({className, kelvin, withToggle = false}) => {
             break;
     }
 
-
     return (
         <Degree className={className}>
             <span>{degree >> 0}</span>
@@ -50,8 +51,12 @@ const DegreeComponent = ({className, kelvin, withToggle = false}) => {
             {
                 withToggle &&
                 <Toggle>
-                    <BtnCelsius onClick={() => setUnit(Units.Celsius)}/>
-                    <BtnFarenheit onClick={() => setUnit(Units.Farenheit)}/>
+                    <BtnCelsius
+                        active={ unit === Units.Celsius }
+                        onClick={() => setUnit(Units.Celsius)}/>
+                    <BtnFarenheit
+                        active={ unit === Units.Farenheit }
+                        onClick={() => setUnit(Units.Farenheit)}/>
                 </Toggle>
             }
 

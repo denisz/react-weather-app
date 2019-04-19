@@ -9,6 +9,7 @@ import {
 import {LocationsService} from "../../services/locations.service";
 import { createWeatherModelFromOWM, createWeeklyForecastModelFromOWM } from "../../models/extensions";
 import {changeListLocations, updateWeather} from "../actions";
+import {NotifyService} from "../../services/notify.service";
 
 
 const fetchFullDataLocation = weatherService => async location => {
@@ -26,11 +27,13 @@ const fetchFullDataLocation = weatherService => async location => {
 
 function* AddCurrentLocation(injector) {
     const locationsService = injector.get(LocationsService);
+    const notifyService = injector.get(NotifyService);
 
     yield takeEvery(CURRENT_LOCATION_SUCCEEDED, function* (action) {
         try {
             yield call(() => locationsService.appendLocation(action.location, true));
             yield put(updateWeather());
+            yield call(() => notifyService.send('Added new location'))
         } catch(e) {
             console.log(e);
         }
@@ -39,11 +42,13 @@ function* AddCurrentLocation(injector) {
 
 function* AddNewLocationsSaga(injector) {
     const locationsService = injector.get(LocationsService);
+    const notifyService = injector.get(NotifyService);
 
     yield takeEvery(LIST_LOCATION_ADD, function* (action) {
         try {
             yield call(() => locationsService.appendLocation(action.location));
             yield put(updateWeather());
+            yield call(() => notifyService.send(`Added new location ${action.location.fullName}`))
         } catch(e) {
             console.log(e);
         }
@@ -52,11 +57,13 @@ function* AddNewLocationsSaga(injector) {
 
 function* RemoveLocationsSaga(injector) {
     const locationsService = injector.get(LocationsService);
+    const notifyService = injector.get(NotifyService);
 
     yield takeEvery(LIST_LOCATION_REMOVE, function* (action) {
         try {
             yield call(() => locationsService.removeLocation(action.location));
             yield put(updateWeather());
+            yield call(() => notifyService.send(`Removed location ${action.location.fullName}`))
         } catch(e) {
             console.log(e);
         }
@@ -72,7 +79,6 @@ function* UpdateWeatherSaga(injector) {
         try {
             const localLocations = yield call(() => locationsService.loadFromStorage());
             const collection = yield all(localLocations.map( l => call(fetch, l)));
-
             yield put(changeListLocations(collection));
         } catch (e) {
             console.log(e);

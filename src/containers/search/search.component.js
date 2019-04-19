@@ -11,13 +11,9 @@ const Card = styled.div`
     margin-top: 10px;
 `;
 
-const StyledSearchInputComponent = styled(SearchInputComponent)`
-    flex: 0;  
-`;
+const StyledSearchInputComponent = styled(SearchInputComponent)``;
 
-const StyledListLocationsComponent = styled(ListLocationsComponent)`    
-    flex: 1;
-`;
+const StyledListLocationsComponent = styled(ListLocationsComponent)``;
 
 const SearchComponent = ({query, collection, className, loading, onChangeQuery, onSearch, onAddNewLocation}) => (
     <Card className={className}>

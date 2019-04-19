@@ -8,6 +8,7 @@ import {LocationComponent} from "../../shared/location/location.component";
 import {updateWeather} from "../../reducers/actions";
 import {device} from "../../utils/device";
 import {EditLocationsContainer} from "../edit-locations/edit-locations.container";
+import {NotifyComponent} from "../../shared/notify/notify.component";
 
 const Card = styled.div`
     height: 100%;
@@ -39,6 +40,7 @@ const WidgetWeatherComponent = ({locations, onRefresh}) => {
 
     return (
         <Card>
+            <NotifyComponent />
             <Wrapper>
                 <Slider >
                     <SliderItem>

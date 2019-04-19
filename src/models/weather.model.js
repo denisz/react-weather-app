@@ -28,6 +28,14 @@ class WeatherModel {
     get timestamp() {
         return new Date(this.dt * 1000)
     }
+
+    get sunrise() {
+        return new Date(this.sys.sunrise * 1000)
+    }
+
+    get sunset() {
+        return new Date(this.sys.sunset * 1000)
+    }
 }
 
 export {WeatherModel}
