@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {EmptyComponent} from "../../shared/empty/empty.component";
 
 const List = styled.div`
-    overflow-y: scroll;
+    overflow-y: auto;
 `;
 
 const ListLocationsComponent = ({ className, onAddNewLocation, collection }) => (

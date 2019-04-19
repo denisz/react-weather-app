@@ -3,7 +3,7 @@ import { ItemLocationComponent } from "./item-location.component";
 import styled from 'styled-components';
 
 const List = styled.div`
-    overflow-y: scroll;
+    overflow-y: auto;
 `;
 
 const ListLocationsComponent = ({ className, onRemoveLocation, collection }) => (
