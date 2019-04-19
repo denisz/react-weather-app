@@ -25,8 +25,8 @@ const Btn = styled.button`
 
 const Text = styled.div`
     color: white;
-    font-size: 16px;
-    padding: 0 10em;
+    font-size: 18px;
+    padding: 0 100px;
     text-align: center;
 `;
 

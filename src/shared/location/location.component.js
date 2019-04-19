@@ -35,7 +35,7 @@ const RowParams = styled.div`
 
 const Icon = styled(IconWeatherBigComponent)``;
 
-const StyledWeeklyForecastComponent = styled(WeeklyForecastComponent)`
+const Forecast = styled(WeeklyForecastComponent)`
     align-self: stretch;
 `;
 
@@ -52,7 +52,7 @@ const LocationComponent = ({ className, weather, forecast, location, prefix="" }
             <SunriseComponent value={weather.sunrise}/>
             <SunsetComponent value={weather.sunset}/>
         </RowParams>
-        <StyledWeeklyForecastComponent forecast={forecast}/>
+        <Forecast forecast={forecast}/>
     </Card>
 );
 

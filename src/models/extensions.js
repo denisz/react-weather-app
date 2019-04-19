@@ -10,8 +10,7 @@ export const createLocationModelFromNavigator = (position, meta = {}) => {
 };
 
 export const createLocationModelFromOWM = (locationFromOWM) => {
-    const country = locationFromOWM.sys.country;
-    const { name, coord:{ lat, lon }} = locationFromOWM;
+    const { sys: {country}, name, coord:{ lat, lon }} = locationFromOWM;
     return new LocationModel(lat, lon, name, country, {});
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getDayTextByDate } from "../../utils/formatter";
+import { getDayTextByDate } from "../../utils/formatter.utils";
 import {IconWeatherSmallComponent} from "../icon-weather/icon-weather.component";
 import {DegreeComponent} from "../degree/degree.component";
 import {HumidityComponent} from "./humidity.component";

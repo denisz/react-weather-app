@@ -6,7 +6,7 @@ import {SearchContainer} from "../search/search.container";
 import {CurrentLocationContainer} from "../current-location/current-location.container";
 import {LocationComponent} from "../../shared/location/location.component";
 import {updateWeather} from "../../reducers/actions";
-import {device} from "../../utils/device";
+import {device} from "../../utils/device.utils";
 import {EditLocationsContainer} from "../edit-locations/edit-locations.container";
 import {NotifyComponent} from "../../shared/notify/notify.component";
 

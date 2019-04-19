@@ -16,8 +16,10 @@ httpClient.interceptors.response.use(
 );
 
 httpClient.interceptors.request.use(req => {
-    const curl = new CurlService(req);
-    console.log('%c Request:', 'color: #4CAF50; font-weight: bold', curl.generateCommand());
+    setTimeout(()=>{
+        const curl = new CurlService(req);
+        console.log('%c Request:', 'color: #4CAF50; font-weight: bold', curl.generateCommand());
+    }, 100);
     return req;
 });
 

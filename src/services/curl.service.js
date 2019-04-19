@@ -43,7 +43,23 @@ class CurlService {
         }
     }
 
+    static serializeGETParams (obj) {
+        let str = [];
+        for (let p in obj)
+            if (obj.hasOwnProperty(p)) {
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            }
+        return str.join("&");
+    }
+
     getUrl() {
+        if (this.request.method.toUpperCase() === 'GET') {
+            const query = CurlService.serializeGETParams(this.request.params);
+            if (query) {
+                return `${this.request.url.trim()}?${query}`
+            }
+        }
+
         return this.request.url.trim();
     }
 

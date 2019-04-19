@@ -8,7 +8,7 @@ import {NotifyService} from "./services/notify.service";
 export default () => {
     const instances = new WeakMap();
 
-    instances.set(httpClient, httpClient.create());
+    instances.set(httpClient, httpClient);
     instances.set(LocalStorageService, new LocalStorageService());
     instances.set(OpenweathermapService, new OpenweathermapService(instances.get(httpClient)));
     instances.set(LocationsService, new LocationsService(instances.get(LocalStorageService)));

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Kelvin2C, Kelvin2F} from "../../utils/temp-converter";
+import {Kelvin2C, Kelvin2F} from "../../utils/temp-converter.utils";
 import styled from "styled-components";
 
 const Degree = styled.div`
